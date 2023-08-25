@@ -1,0 +1,8 @@
+void User_Choice (const int* your_choice)
+{
+    while (scanf("%d", your_choice) != 1 && 
+           your_choice != 1 &&
+           your_choice != 1 &&
+           your_choice != 1 &&)
+           printf("Please, choice"
+}

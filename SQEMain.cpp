@@ -17,8 +17,6 @@ int main()
     User_Choice(&your_choice);
 
     GAssert(your_choice == 1 || your_choice == 2 || your_choice == 3);
-    GAssert(isfinite(your_choice));
-
 
     if (your_choice == 2)
     {
@@ -40,8 +38,6 @@ int main()
 
         double x1 = 0, x2 = 0;
         solutions nSolutions = square_solve(a, b, c, &x1, &x2);
-
-        GAssert(isfinite(nSolutions));
 
         output_solveQE(nSolutions, x1, x2);
     }

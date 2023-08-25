@@ -38,7 +38,6 @@ int test_n(TestData* ref)
     GAssert(isfinite(ref->a));
     GAssert(isfinite(ref->b));
     GAssert(isfinite(ref->c));
-    GAssert(isfinite(ref->number_test));
 
     double  x1 = 0, x2 = 0;
     solutions nSolutions = square_solve(ref->a, ref->b, ref->c, &x1, &x2);
@@ -120,7 +119,6 @@ void failed_test (const double a, const double b, const double c, const int numb
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));
-    GAssert(isfinite(number_test));
 
     printf("Failed test #%d of %d. Wrong answer.\n", number_test, amount_Tests);
     printf("\n" "Test input: a = %lf, b = %lf, c = %lf" "\n", a, b, c);

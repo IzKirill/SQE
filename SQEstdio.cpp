@@ -20,7 +20,6 @@ void output_solveQE (solutions nSolutions, const double x1, const double x2)
 
     GAssert(isfinite(x1));
     GAssert(isfinite(x2));
-    GAssert(isfinite(nSolutions));
     GAssert(nSolutions == ZERO || nSolutions == ONE ||
             nSolutions == TWO || nSolutions == INFINITELY);
 

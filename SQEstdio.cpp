@@ -15,7 +15,7 @@ void input_coef (double* coefficient)
     }
 }
 
-void output_solveQE (solutions nSolutions, const double x1, const double x2)
+void output_solveQE (Solutions nSolutions, const double x1, const double x2)
 {
 
     GAssert(isfinite(x1));

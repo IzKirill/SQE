@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include <math.h>
 
-static solutions discriminant (const double a, const double b, const double c,
+static Solutions discriminant (const double a, const double b, const double c,
                                double* root1, double* root2);
 
 
-solutions square_solve (const double a,const double b,const double c, double* x1, double* x2)
+Solutions square_solve (const double a,const double b,const double c, double* x1, double* x2)
 {
     GAssert(isfinite(a));
     GAssert(isfinite(b));
@@ -82,7 +82,7 @@ solutions square_solve (const double a,const double b,const double c, double* x1
     }
 }
 
-solutions lin_solver (const double b, const double c, double* root1)
+Solutions lin_solver (const double b, const double c, double* root1)
 {
 
     GAssert(isfinite(b));
@@ -109,7 +109,7 @@ solutions lin_solver (const double b, const double c, double* root1)
     }
 }
 
-static solutions discriminant (const double a, const double b, const double c,
+static Solutions discriminant (const double a, const double b, const double c,
                                double* root1, double* root2)
 {
 

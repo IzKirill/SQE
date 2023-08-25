@@ -40,7 +40,7 @@ int test_n(TestData* ref)
     GAssert(isfinite(ref->c));
 
     double  x1 = 0, x2 = 0;
-    solutions nSolutions = square_solve(ref->a, ref->b, ref->c, &x1, &x2);
+    Solutions nSolutions = square_solve(ref->a, ref->b, ref->c, &x1, &x2);
 
     GAssert(isfinite(x1));
     GAssert(isfinite(x2));

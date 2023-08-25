@@ -37,7 +37,7 @@ int main()
         GAssert(isfinite(c));
 
         double x1 = 0, x2 = 0;
-        solutions nSolutions = square_solve(a, b, c, &x1, &x2);
+        Solutions nSolutions = square_solve(a, b, c, &x1, &x2);
 
         output_solveQE(nSolutions, x1, x2);
     }

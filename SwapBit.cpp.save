@@ -1,8 +1,0 @@
-#include <std>
-
-int main()
-{
-    double first[5];
-    double second[5];
-    
-}

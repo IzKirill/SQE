@@ -7,27 +7,11 @@
 #include <math.h>
 
 void input_coef (double* coefficient)
-{   while (1)
+{
+    while (scanf("%lf", coefficient) != 1)
     {
-        int ch = 0, error = 0;
-        if (scanf("%lf", coefficient) != 1)
-        {
-            clear_buf();
-            printf("Input correct nubmer. For example, 4 or 5,25. \n");
-        }
-        else
-        {
-            while((ch = getchar()) != '\n' && error == 0)
-            {
-                if (ch != ' ' && ch != '\n')
-                {
-                    printf("Input correct nubmer. For example, 4 or 5,25. \n");
-                    error++;
-                }
-            }
-        }
-            if (error == 0)
-                return;
+        clear_buf();
+        printf("Input correct nubmer. For example, 4 or 5,25. \n");
     }
 }
 

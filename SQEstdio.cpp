@@ -17,7 +17,6 @@ void input_coef (double* coefficient)
 
 void output_solveQE (Solutions nSolutions, const double x1, const double x2)
 {
-
     GAssert(isfinite(x1));
     GAssert(isfinite(x2));
     GAssert(nSolutions == ZERO || nSolutions == ONE ||

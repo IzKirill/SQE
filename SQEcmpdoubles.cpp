@@ -18,7 +18,6 @@ cmp_double cmpz_doubles (const double double_number)
 
 bool equal_zero(const double coefficient)
 {
-
     GAssert(isfinite(coefficient));
 
     return cmpz_doubles(coefficient) == DOUBLE_EQUALS_ZERO;
@@ -26,7 +25,6 @@ bool equal_zero(const double coefficient)
 
 int cmp_doubles (const double double_number1, const double double_number2)
 {
-
     GAssert(isfinite(double_number1));
     GAssert(isfinite(double_number2));
 

@@ -84,7 +84,6 @@ Solutions square_solve (const double a,const double b,const double c, double* x1
 
 Solutions lin_solver (const double b, const double c, double* root1)
 {
-
     GAssert(isfinite(b));
     GAssert(isfinite(c));
 
@@ -112,7 +111,6 @@ Solutions lin_solver (const double b, const double c, double* root1)
 static Solutions discriminant (const double a, const double b, const double c,
                                double* root1, double* root2)
 {
-
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));

@@ -34,7 +34,6 @@ int SQEtest(void)
 
 int test_n(TestData* ref)
 {
-
     GAssert(isfinite(ref->a));
     GAssert(isfinite(ref->b));
     GAssert(isfinite(ref->c));

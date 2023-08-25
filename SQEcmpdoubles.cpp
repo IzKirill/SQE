@@ -1,4 +1,7 @@
 #include "SQEcmpdoubles.h"
+#include "MyAssert.h"
+#include <stdio.h>
+#include <math.h>
 
 
 cmp_double cmpz_doubles (const double double_number)

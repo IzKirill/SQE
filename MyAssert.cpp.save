@@ -1,7 +1,5 @@
 #include "MyAssert.h"
-#include <stdio.h>
-#include <stdlib.h>
-
+z
 void MyAssert(int expression, const int nline, const char file[])
 {
     if(expression == 0)

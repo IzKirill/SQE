@@ -1,4 +1,11 @@
-#include "SQEMAIN.h"
+#include "SQEsolver.h"
+#include "SQEtest.h"
+#include "MyAssert.h"
+#include "SQEchoice.h"
+#include "SQEstdio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 int main()
 {

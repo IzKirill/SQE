@@ -1,4 +1,8 @@
 #include "SQEsolver.h"
+#include "SQEcmpdoubles.h"
+#include "MyAssert.h"
+#include <stdio.h>
+#include <math.h>
 
 static solutions discriminant (const double a, const double b, const double c,
                                double* root1, double* root2);

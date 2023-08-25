@@ -8,6 +8,7 @@
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 enum solutions {ZERO = 0,
@@ -17,15 +18,15 @@ enum solutions {ZERO = 0,
 
 const int amount_Tests = 15;
 
-void MyAssert(int expression, const int nline, const char file[]);
-
-void User_Choice (int* your_choice);
-
 int SQEtest (void);
+
+void MyAssert(int expression, const int nline, const char file[]);
 
 solutions square_solve (const double a, const double b, const double c, double* root1, double* root2);
 
+void User_Choice (int* your_choice);
+
 void input_coef (double* coefficient);
-void output_solveQE (solutions nSolutions, const double x1, const double x2);
+void output_solveQE (solutions nSolutions, const double root1, const double root2);
 
 #endif

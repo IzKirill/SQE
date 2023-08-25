@@ -1,4 +1,7 @@
 #include "SQEchoice.h"
+#include "MyAssert.h"
+#include "Clear_Buffer.h"
+#include <stdio.h>
 
 void User_Choice (int* your_choice)
 {

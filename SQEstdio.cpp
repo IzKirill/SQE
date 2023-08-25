@@ -1,11 +1,10 @@
+#include "SQEsolver.h"
 #include "SQEstdio.h"
-
-void clear_buf()
-{
-    int ch = 0;
-    while((ch = getchar()) != '\n')
-        ;
-}
+#include "Clear_Buffer.h"
+#include "MyAssert.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 void input_coef (double* coefficient)
 {

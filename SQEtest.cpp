@@ -1,4 +1,10 @@
+#include "SQEsolver.h"
 #include "SQEtest.h"
+#include "MyAssert.h"
+#include "SQEcmpdoubles.h"
+#include <stdio.h>
+#include <math.h>
+#include <float.h>
 
 int SQEtest(void)
 {

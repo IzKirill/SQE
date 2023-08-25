@@ -5,24 +5,33 @@
 
 void User_Choice (int* your_choice)
 {
-    int OK = 1;
-    while (OK)
+    while (1)
     {
+        int ch = 0, error = 0;
         if (scanf("%d", your_choice) != 1)
         {
             clear_buf();
             printf("Please, write a number. \n");
+            error++;
         }
         else if (*your_choice != 1 && *your_choice != 2 && *your_choice != 3)
         {
-            GAssert(*your_choice == 1 || *your_choice != 2 || *your_choice != 3);
-
             clear_buf();
             printf("Make correct choice: 1, 2 or 3! \n");
+            error++;
         }
         else
         {
-            OK = 0;
+            while((ch = getchar()) != '\n' && error == 0)
+            {
+                if (ch != ' ' && ch != '\n')
+                {
+                    printf("Input correct nubmer. For example, 4 or 5,25. \n");
+                    error++;
+                }
+            }
         }
+        if (error == 0)
+            return;
     }
 }

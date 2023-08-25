@@ -100,7 +100,7 @@ void sort_roots (double* x1, double* x2)
 
     if (*x1 > *x2)
     {
-        double temp;
+        double temp = 0;
         temp = *x1;
         *x1 = *x2;
         *x2 = temp;

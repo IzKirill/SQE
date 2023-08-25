@@ -24,7 +24,7 @@ int main()
         printf("%d/%d successfully completed tests.", nOK, amount_Tests);
     }
 
-    if (your_choice == 1)
+    else if (your_choice == 1)
     {
         printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
         double a = 0, b = 0, c = 0;
@@ -42,7 +42,7 @@ int main()
         output_solveQE(nSolutions, x1, x2);
     }
 
-    if (your_choice == 3)
+    else if (your_choice == 3)
     {
         return 0;
     }

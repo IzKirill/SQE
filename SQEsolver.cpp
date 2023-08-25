@@ -5,10 +5,11 @@
 #include <math.h>
 
 static Solutions QE_part_discriminant (const double a, const double b, const double c,
-                               double* root1, double* root2);
+                                       double* root1, double* root2);
 
 
-Solutions square_solver (const double a,const double b,const double c, double* x1, double* x2)
+Solutions square_solver (const double a,const double b,const double c,
+                         double* root1, double* root1)
 {
     GAssert(isfinite(a));
     GAssert(isfinite(b));
@@ -109,7 +110,7 @@ Solutions lin_solver (const double b, const double c, double* root1)
 }
 
 static Solutions QE_part_discriminant (const double a, const double b, const double c,
-                               double* root1, double* root2)
+                                       double* root1, double* root2)
 {
     GAssert(isfinite(a));
     GAssert(isfinite(b));

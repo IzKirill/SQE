@@ -6,7 +6,7 @@ void MyAssert(int expression, const int nline, const char file[], const char fun
 {
     if(expression == 0)
     {
-        printf("Error(: Line - %d, File(%s), Function - %s\n", nline, file, func);
+        printf("%s:%d: error in function %s.", file, nline, func);
         exit(5);
     }
 }

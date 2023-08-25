@@ -6,7 +6,6 @@
 
 cmp_double cmpz_doubles (const double double_number)
 {
-
     GAssert(isfinite(double_number));
 
     if (fabs(double_number) < EPS)

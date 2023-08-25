@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Clear_Buffer.h"
 #include <stdio.h>
 

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
-static Solutions discriminant (const double a, const double b, const double c,
+static Solutions QE_part_discriminant (const double a, const double b, const double c,
                                double* root1, double* root2);
 
 
@@ -108,7 +108,7 @@ Solutions lin_solver (const double b, const double c, double* root1)
     }
 }
 
-static Solutions discriminant (const double a, const double b, const double c,
+static Solutions QE_part_discriminant (const double a, const double b, const double c,
                                double* root1, double* root2)
 {
     GAssert(isfinite(a));

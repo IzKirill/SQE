@@ -23,7 +23,8 @@ int SQEtest(void)
      {.a = 1,  .b = -4,   .c = 3.75,     .x1 = 1.5,     .x2 = 2.5, .nroots = TWO,       .number_test = 12},
      {.a = 1,  .b = 7.25, .c = -24.375,  .x1 = -9.75,   .x2 = 2.5, .nroots = TWO,       .number_test = 13},
      {.a = 0,  .b = 1,    .c = -DBL_MAX, .x1 = DBL_MAX, .x2 = 0,   .nroots = ONE,       .number_test = 14},
-     {.a = 0,  .b = 1,    .c = -DBL_MIN, .x1 = DBL_MIN, .x2 = 0,   .nroots = ONE,       .number_test = 15}};
+     {.a = 0,  .b = 1,    .c = -DBL_MIN, .x1 = DBL_MIN, .x2 = 0,   .nroots = ONE,       .number_test = 15},
+     {.a = 1,  .b = 2,    .c = 1,        .x1 = -1,      .x2 = 0,   .nroots = ONE,       .number_test = 16}};
     int nOK = 0;
     for (int i = 0; i < amount_Tests; i++, nOK++)
         test_n(&TInputData[i]);

@@ -18,11 +18,8 @@ enum solutions {ZERO = 0,
 const int amount_Tests = 15;
 
 void MyAssert(int expression, const int nline, const char file[]);
-
 void User_Choice (int* your_choice);
-
 int SQEtest (void);
-
 solutions square_solve (const double a, const double b, const double c, double* root1, double* root2);
 
 void input_coef (double* coefficient);

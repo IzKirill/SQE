@@ -2,7 +2,6 @@
 
 int main()
 {
-    GAssert(0);
     printf("\t\t" "Hello, enter the number:\n"
            "1: Solve quadratic equation.\t"
            "2: test code." "\t" "3: quit" "\n");

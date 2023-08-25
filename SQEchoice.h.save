@@ -1,8 +1,0 @@
-#ifndef __SQECMPDOUBLES_H__
-#define __SQECMPDOUBLES_H__
-
-#include <stdio.h>
-
-void User_Choice (int* your_choice);
-
-#endif

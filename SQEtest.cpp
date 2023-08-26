@@ -119,7 +119,6 @@ static int test_n(TestData* ref, const int IDtest)
 
 void sort_roots (double* x1, double* x2)
 {
-
     GAssert(isfinite(*x1));
     GAssert(isfinite(*x2));
 
@@ -134,7 +133,6 @@ void sort_roots (double* x1, double* x2)
 
 static void failed_test (const double a, const double b, const double c, const int IDtest)
 {
-
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));

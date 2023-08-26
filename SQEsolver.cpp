@@ -45,7 +45,6 @@ Solutions square_solver (const double a,const double b,const double c,
         }
         else
         {
-
                 GAssert(equal_zero(b));
                 GAssert(!(equal_zero(a)));
                 GAssert(cmpz_doubles(c) == DOUBLE_LESS_ZERO);
@@ -63,7 +62,6 @@ Solutions square_solver (const double a,const double b,const double c,
        }
        else if (equal_zero(c))
        {
-
             GAssert(!(equal_zero(a)));
             GAssert(!(equal_zero(b)));
 

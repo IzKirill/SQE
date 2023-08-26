@@ -16,7 +16,8 @@ int main()
     int your_choice = 0;
     User_Choice(&your_choice);
 
-    GAssert(your_choice == 1 || your_choice == 2 || your_choice == 3);
+    GAssert(your_choice == 1 || your_choice == 2 ||
+            your_choice == 3);
 
     if (your_choice == 2)
     {

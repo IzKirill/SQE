@@ -9,17 +9,17 @@ static Solutions QE_part_discriminant (const double a, const double b, const dou
 
 
 Solutions square_solver (const double a,const double b,const double c,
-                         double* root1, double* root1)
+                         double* root1, double* root2)
 {
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));
-    GAssert(isfinite(*x1));
-    GAssert(isfinite(*x2));
+    GAssert(isfinite(*root1));
+    GAssert(isfinite(*root2));
 
     if (equal_zero(a))
     {
-      return lin_solver (b, c, x1);
+      return lin_solver (b, c, root1);
     }
     else
     {
@@ -29,9 +29,9 @@ Solutions square_solver (const double a,const double b,const double c,
         {
             GAssert(!(equal_zero(a)));
 
-            *x1 = 0;
+            *root1 = 0;
 
-            GAssert(isfinite(*x1));
+            GAssert(isfinite(*root1));
 
             return ONE;
         }
@@ -51,12 +51,12 @@ Solutions square_solver (const double a,const double b,const double c,
                 GAssert(cmpz_doubles(c) == DOUBLE_LESS_ZERO);
 
                 double root_of_c = sqrt(-c/a);
-                *x1 = root_of_c;
-                *x2 = -root_of_c;
+                *root1 = root_of_c;
+                *root2 = -root_of_c;
 
-                GAssert(cmp_doubles(*x1, *x2) != DOUBLE_EQUALS_ZERO);
-                GAssert(isfinite(*x1));
-                GAssert(isfinite(*x2));
+                GAssert(cmp_doubles(*root1, *root2) != DOUBLE_EQUALS_ZERO);
+                GAssert(isfinite(*root1));
+                GAssert(isfinite(*root2));
 
                 return TWO;
         }
@@ -67,18 +67,18 @@ Solutions square_solver (const double a,const double b,const double c,
             GAssert(!(equal_zero(a)));
             GAssert(!(equal_zero(b)));
 
-            *x1 = 0;
-            lin_solver (a, b, x2);
+            *root1 = 0;
+            lin_solver (a, b, root2);
 
-            GAssert(cmp_doubles(*x1, *x2) != DOUBLE_EQUALS_ZERO);
-            GAssert(isfinite(*x2));
-            GAssert(isfinite(*x1));
+            GAssert(cmp_doubles(*root1, *root2) != DOUBLE_EQUALS_ZERO);
+            GAssert(isfinite(*root2));
+            GAssert(isfinite(*root1));
 
             return TWO;
        }
        else
        {
-            return discriminant(a, b, c, x1, x2);
+            return QE_part_discriminant(a, b, c, root1, root2);
        }
     }
 }

@@ -10,6 +10,10 @@
 
 static const int ntests = 13;
 
+static int test_n(TestData* ref, const int IDtest);
+static void failed_test(const double a, const double b, const double c,
+                        const int number_test);
+
 int SQEtest(int* n_of_tests)
 {
     *n_of_tests = ntests;
@@ -37,7 +41,7 @@ int SQEtest(int* n_of_tests)
     return nOK;
 }
 
-int test_n(TestData* ref, const int IDtest)
+static int test_n(TestData* ref, const int IDtest)
 {
     GAssert(isfinite(ref->a));
     GAssert(isfinite(ref->b));
@@ -128,7 +132,7 @@ void sort_roots (double* x1, double* x2)
     }
 }
 
-void failed_test (const double a, const double b, const double c, const int IDtest)
+static void failed_test (const double a, const double b, const double c, const int IDtest)
 {
 
     GAssert(isfinite(a));

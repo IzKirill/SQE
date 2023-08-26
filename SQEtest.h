@@ -8,7 +8,5 @@ struct TestData
 };
 
 int SQEtest(int* n_of_tests);
-int test_n(TestData* ref, const int IDtest);
-void failed_test(const double a, const double b, const double c, const int number_test);
 
 void sort_roots (double* x1, double* x2);

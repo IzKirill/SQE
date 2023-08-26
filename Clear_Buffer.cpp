@@ -7,3 +7,13 @@ void clear_buf()
     while((ch = getchar()) != '\n')
         ;
 }
+
+int status_buffer()
+{
+    int ch = 0;
+    while((ch = getchar()) != '\n')
+    {
+        if (ch != ' ' && ch != '\n')
+            return 1;
+    }
+}

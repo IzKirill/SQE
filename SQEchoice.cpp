@@ -3,12 +3,6 @@
 #include "Clear_Buffer.h"
 #include <stdio.h>
 
-/*
-
-"%d " // "xxx", "1 xxx"
-d == 1 ?
-*/
-
 void User_Choice (int* your_choice)
 {
     int OK = 0;

@@ -6,28 +6,32 @@
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
+#include <stdlib.h>
 
-int SQEtest(void)
+static const int ntests = 13;
+
+int SQEtest(int* n_of_tests)
 {
-    static TestData TInputData[amount_Tests] =
-    {{.a = 0,  .b = 0,    .c = 0,        .x1 = 0,       .x2 = 0,   .nroots = INFINITELY,},
-     {.a = 5,  .b = 0,    .c = 10,       .x1 = 0,       .x2 = 0,   .nroots = ZERO,      },
-     {.a = 0,  .b = 0,    .c = 15,       .x1 = 0,       .x2 = 0,   .nroots = ZERO,      },
-     {.a = 0,  .b = 10,   .c = 20,       .x1 = -2,      .x2 = 0,   .nroots = ONE,       },
-     {.a = -5, .b = 0,    .c = 0,        .x1 = 0,       .x2 = 0,   .nroots = ONE,       },
-     {.a = 5,  .b = 0,    .c = -125,     .x1 = -5,      .x2 = 5,   .nroots = TWO,       },
-     {.a = 10, .b = 10,   .c = 0,        .x1 = -1,      .x2 = 0,   .nroots = TWO,       },
-     {.a = 2,  .b = -1,   .c = 4,        .x1 = 0,       .x2 = 0,   .nroots = ZERO,      },
-     {.a = 1,  .b = 2,    .c = 1,        .x1 = -1,      .x2 = 0,   .nroots = ONE,       },
-     {.a = 1,  .b = -6,   .c = 5,        .x1 = 1,       .x2 = 5,   .nroots = TWO,       },
-     {.a = 4,  .b = 5,    .c = -9,       .x1 = -2.25,   .x2 = 1,   .nroots = TWO,       },
-     {.a = 1,  .b = -4,   .c = 3.75,     .x1 = 1.5,     .x2 = 2.5, .nroots = TWO,       },
-     {.a = 1,  .b = 7.25, .c = -24.375,  .x1 = -9.75,   .x2 = 2.5, .nroots = TWO,       },
-     {.a = 0,  .b = 1,    .c = -DBL_MAX, .x1 = DBL_MAX, .x2 = 0,   .nroots = ONE,       },
-     {.a = 0,  .b = 1,    .c = -DBL_MIN, .x1 = DBL_MIN, .x2 = 0,   .nroots = ONE,       },
-     {.a = 1,  .b = 2,    .c = 1,        .x1 = -1,      .x2 = 0,   .nroots = ONE,       }};
+    *n_of_tests = ntests;
+    static TestData TInputData[ntests];
+
+    FILE *Tests;
+
+    if ((Tests = fopen("Tests.csv", "r")) == NULL)
+    {
+        printf("Cannot open file.\n");
+        exit(1);
+    }
+
+    for(int i = 0; fscanf(Tests,"%lf%lf%lf%lf%lf%d", &(TInputData[i].a),
+    &(TInputData[i].b), &(TInputData[i].c), &(TInputData[i].x1), &(TInputData[i].x2),
+    &(TInputData[i].nroots)) != EOF; i++)
+        ;
+
+    fclose(Tests);
+
     int nOK = 0;
-    for (int i = 0; i < amount_Tests; i++)
+    for (int i = 0; i < ntests; i++)
         nOK += test_n(&TInputData[i], i+1);
 
     return nOK;
@@ -131,7 +135,7 @@ void failed_test (const double a, const double b, const double c, const int IDte
     GAssert(isfinite(b));
     GAssert(isfinite(c));
 
-    printf("Failed test #%d of %d. Wrong answer.\n", IDtest, amount_Tests);
+    printf("Failed test #%d of %d. Wrong answer.\n", IDtest, ntests);
     printf("\n" "Test input: a = %lf, b = %lf, c = %lf" "\n", a, b, c);
 }
 

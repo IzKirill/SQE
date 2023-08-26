@@ -6,9 +6,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-void input_coef (double* coefficient)
+void input_coef (double* coefficient, int n_coefficient)
 {
-    while (scanf("%lf", coefficient) != 1)
+    printf("Coefficient number - %d: ", n_coefficient);
+    while (scanf("%lf", coefficient) != 1 || status_buffer())
     {
         clear_buf();
         printf("Input correct nubmer. For example, 4 or 5,25. \n");

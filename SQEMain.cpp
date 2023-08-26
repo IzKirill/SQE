@@ -30,9 +30,9 @@ int main()
     {
         printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
         double a = 0, b = 0, c = 0;
-        input_coef(&a);
-        input_coef(&b);
-        input_coef(&c);
+        input_coef(&a, 1);
+        input_coef(&b, 2);
+        input_coef(&c, 3);
 
         GAssert(isfinite(a));
         GAssert(isfinite(b));

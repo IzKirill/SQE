@@ -21,8 +21,9 @@ int main()
 
     if (your_choice == 2)
     {
-        int nOK = SQEtest();
-        printf("%d/%d successfully completed tests.", nOK, amount_Tests);
+        int n_of_tests = 0;
+        int nOK = SQEtest(&n_of_tests);
+        printf("%d/%d successfully completed tests.", nOK, n_of_tests);
     }
 
     else if (your_choice == 1)

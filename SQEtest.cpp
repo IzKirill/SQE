@@ -27,8 +27,8 @@ int SQEtest(void)
      {.a = 0,  .b = 1,    .c = -DBL_MIN, .x1 = DBL_MIN, .x2 = 0,   .nroots = ONE,       .number_test = 15},
      {.a = 1,  .b = 2,    .c = 1,        .x1 = -1,      .x2 = 0,   .nroots = ONE,       .number_test = 16}};
     int nOK = 0;
-    for (int i = 0; i < amount_Tests; i++, nOK++)
-        test_n(&TInputData[i]);
+    for (int i = 0; i < amount_Tests; i++)
+        nOK += test_n(&TInputData[i]);
 
     return nOK;
 }
@@ -59,6 +59,7 @@ int test_n(TestData* ref)
             output_solveQE(nSolutions, x1, x2);
             return 0;
         }
+        return 1;
         break;
 
     case(ONE):
@@ -71,6 +72,7 @@ int test_n(TestData* ref)
             output_solveQE(nSolutions, x1, x2);
             return 0;
         }
+        return 1;
         break;
 
     case(TWO):
@@ -84,6 +86,7 @@ int test_n(TestData* ref)
             output_solveQE(nSolutions, x1, x2);
             return 0;
         }
+        return 1;
         break;
 
     case(INFINITELY):
@@ -96,14 +99,13 @@ int test_n(TestData* ref)
             output_solveQE(nSolutions, x1, x2);
             return 0;
         }
+        return 1;
         break;
 
     default:
         printf("ERROR: nSolutions = %d \n", nSolutions);
         return 0;
     }
-
-    return 1;
 }
 
 void sort_roots (double* x1, double* x2)

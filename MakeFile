@@ -1,0 +1,21 @@
+SQEFilesAll = SQEMain.o SQEsolver.o SQEtest.o SQEstdio.o SQEcmpdoubles.o SQEchoice.o MyAssert.o Clear_Buffer.o
+
+all: $(SQEFilesAll)
+	g++ $(SQEFilesAll) -o SQE
+	./SQE
+SQEMain.o: SQEMain.cpp
+	g++ -c SQEMain.cpp
+SQEsolver.o: SQEsolver.cpp
+	g++ -c SQEsolver.cpp
+SQEtest.o: SQEtest.cpp
+	g++ -c SQEtest.cpp
+SQEstdio.o: SQEstdio.cpp
+	g++ -c SQEstdio.cpp
+SQEcmpdoubles.o.o: SQEcmpdoubles.o.cpp
+	g++ -c SQEcmpdoubles.o.cpp
+SQEchoice.o: SQEchoice.cpp
+	g++ -c SQEchoice.cpp
+MyAssert.o: MyAssert.cpp
+	g++ -c MyAssert.cpp
+Clear_Buffer.o: Clear_Buffer.cpp
+	g++ -c Clear_Buffer.cpp

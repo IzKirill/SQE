@@ -2,6 +2,7 @@
 #include "SQEtest.h"
 #include "MyAssert.h"
 #include "SQEcmpdoubles.h"
+#include "SQEstdio.h"
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
@@ -39,7 +40,7 @@ int test_n(TestData* ref)
     GAssert(isfinite(ref->c));
 
     double  x1 = 0, x2 = 0;
-    Solutions nSolutions = square_solve(ref->a, ref->b, ref->c, &x1, &x2);
+    Solutions nSolutions = square_solver(ref->a, ref->b, ref->c, &x1, &x2);
 
     GAssert(isfinite(x1));
     GAssert(isfinite(x2));
@@ -52,8 +53,10 @@ int test_n(TestData* ref)
         if (nSolutions != ref->nroots)
         {
             failed_test(ref->a, ref->b, ref->c, ref->number_test);
-            printf("\n" "Correct output: nSolutions = ZERO" "\n");
-            printf("\n" "Your code output: nSolutions = %d" "\n", nSolutions);
+            printf("\n" "Correct output:");
+            output_solveQE(ref->nroots, ref->x1, ref->x2);
+            printf("\n" "Your code output:");
+            output_solveQE(nSolutions, x1, x2);
             return 0;
         }
         break;
@@ -62,8 +65,10 @@ int test_n(TestData* ref)
         if(nSolutions != ref->nroots || cmp_doubles(x1, ref->x1))
         {
             failed_test(ref->a, ref->b, ref->c, ref->number_test);
-            printf("\n" "Correct output: nSolutions = ONE, x1 = %lf" "\n", ref->x1);
-            printf("\n" "Your code output: nSolutions = %d, x1 = %lf" "\n", nSolutions, x1);
+            printf("\n" "Correct output:");
+            output_solveQE(ref->nroots, ref->x1, ref->x2);
+            printf("\n" "Your code output:");
+            output_solveQE(nSolutions, x1, x2);
             return 0;
         }
         break;
@@ -73,8 +78,10 @@ int test_n(TestData* ref)
         if (nSolutions != ref->nroots || cmp_doubles(x1, ref->x1) || cmp_doubles(x2, ref->x2))
         {
             failed_test(ref->a, ref->b, ref->c, ref->number_test);
-            printf("\n" "Correct output: nSolutions = ONE, x1 = %lf, x2 = %lf" "\n", ref->x1, ref->x2);
-            printf("\n" "Your code output: nSolutions = %d, x1 = %lf, x2 = %lf" "\n", nSolutions, x1, x2);
+            printf("\n" "Correct output:");
+            output_solveQE(ref->nroots, ref->x1, ref->x2);
+            printf("\n" "Your code output:");
+            output_solveQE(nSolutions, x1, x2);
             return 0;
         }
         break;
@@ -83,8 +90,10 @@ int test_n(TestData* ref)
         if (nSolutions != ref->nroots)
         {
             failed_test(ref->a, ref->b, ref->c, ref->number_test);
-            printf("\n" "Correct output: nSolutions = INFINITELY" "\n");
-            printf("\n" "Your code output: nSolutions = %d" "\n", nSolutions);
+            printf("\n" "Correct output:");
+            output_solveQE(ref->nroots, ref->x1, ref->x2);
+            printf("\n" "Your code output:");
+            output_solveQE(nSolutions, x1, x2);
             return 0;
         }
         break;

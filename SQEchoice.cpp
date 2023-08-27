@@ -5,7 +5,6 @@
 
 void User_Choice (int* your_choice)
 {
-    int OK = 0;
     while (scanf("%d", your_choice) != 1 || status_buffer() ||
           (*your_choice != 1 && *your_choice != 2 && *your_choice != 3) )
     {

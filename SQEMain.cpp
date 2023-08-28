@@ -1,6 +1,9 @@
 #include "SQEcommand.h"
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
+
+HANDLE console_main = GetStdHandle(STD_OUTPUT_HANDLE);
 
 int main(int argc, char *argv[])
 {
@@ -28,7 +31,10 @@ int main(int argc, char *argv[])
     {
         if (argc < 3)
         {
+            SetConsoleTextAttribute(console_main, (0 << 4) | 12);
             printf("Input name of your file after -file.");
+
+            SetConsoleTextAttribute(console_main, (0 << 4) | 15);
         }
         else
         {
@@ -42,7 +48,10 @@ int main(int argc, char *argv[])
     }
     else
     {
+        SetConsoleTextAttribute(console_main, (0 << 4) | 12);
         printf("Unknown command, write -help.\n");
+
+        SetConsoleTextAttribute(console_main, (0 << 4) | 15);
     }
     return 0;
 }

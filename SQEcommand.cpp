@@ -6,12 +6,25 @@
 #include "SQEcommand.h"
 #include <stdio.h>
 #include <math.h>
+#include <windows.h>
+
+HANDLE console_command = GetStdHandle(STD_OUTPUT_HANDLE);
 
 int main_menu()
 {
-    printf("\t\t" "Hello, enter the number:\n"
-               "1: Solve quadratic equation.\t"
-               "2: test code." "\t" "3: quit" "\n");
+    SetConsoleTextAttribute(console_command, (0 << 4) | 14);
+    printf("\t\t" "Hello, enter the number:\n");
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 1);
+    printf("1: Solve quadratic equation.\t");
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 5);
+    printf("2: test code.\t");
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 4);
+    printf("3: quit" "\n");
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
 
     int your_choice = 0;
     User_Choice(&your_choice);
@@ -39,12 +52,20 @@ void test(char file[])
 {
     int n_of_tests = 0;
     int nOK = SQEtest(&n_of_tests, file);
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 2);
     printf("%d/%d successfully completed tests.", nOK, n_of_tests);
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
 }
 
 void square()
 {
+    SetConsoleTextAttribute(console_command, (0 << 4) | 6);
     printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
+
+    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
+
     double a = 0, b = 0, c = 0;
     input_coef(&a, 1);
     input_coef(&b, 2);

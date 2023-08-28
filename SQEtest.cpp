@@ -121,6 +121,8 @@ void sort_roots (double* x1, double* x2)
 {
     GAssert(isfinite(*x1));
     GAssert(isfinite(*x2));
+    GAssert(x1 != NULL);
+    GAssert(x2 != NULL);
 
     if (*x1 > *x2)
     {

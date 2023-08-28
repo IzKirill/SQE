@@ -16,6 +16,9 @@ Solutions square_solver (const double a,const double b,const double c,
     GAssert(isfinite(c));
     GAssert(isfinite(*root1));
     GAssert(isfinite(*root2));
+    GAssert(root1 != NULL);
+    GAssert(root2 != NULL);
+
 
     if (equal_zero(a))
     {
@@ -85,6 +88,7 @@ Solutions lin_solver (const double b, const double c, double* root1)
 {
     GAssert(isfinite(b));
     GAssert(isfinite(c));
+    GAssert(root1 != NULL);
 
     if (equal_zero(b))
     {
@@ -116,6 +120,8 @@ static Solutions QE_part_discriminant (const double a, const double b, const dou
     GAssert(!(equal_zero(a)));
     GAssert(!(equal_zero(b)));
     GAssert(!(equal_zero(c)));
+    GAssert(root1 != NULL);
+    GAssert(root2 != NULL);
 
     double D = b*b - 4*a*c;
 

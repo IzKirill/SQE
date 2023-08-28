@@ -8,6 +8,8 @@
 
 void input_coef (double* coefficient, int n_coefficient)
 {
+    GAssert(coefficient != NULL);
+
     printf("Coefficient number - %d: ", n_coefficient);
     while (scanf("%lf", coefficient) != 1 || status_buffer())
     {

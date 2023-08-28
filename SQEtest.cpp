@@ -16,11 +16,8 @@ static int failed_test (const double a, const double b, const double c,
                         const double refx1, const double refx2, Solutions refnroots,
                         const double x1, const double x2, Solutions nroots);
 
-/*
-    SQEtest(.., "square_tests.txt");
-*/
 
-int SQEtest(int* n_of_tests)
+int SQEtest(int* n_of_tests, char file[])
 {
     double a = 0, b = 0, c = 0;
     double refx1 = 0, refx2 = 0;
@@ -28,22 +25,29 @@ int SQEtest(int* n_of_tests)
 
     FILE *Tests = NULL;
 
-    if ((Tests = fopen("Tests.csv", "r")) == NULL)
+    if ((Tests = fopen(file, "r")) == NULL)
     {
         printf("Cannot open file.\n");
         exit(1);
     }
 
-    int nOK = 0, ngood_snann = 0;
-    for( ; (ngood_snann = fscanf(Tests,"%lf%lf%lf%lf%lf%d",
-        &a, &b, &c, &refx1, &refx2, &refnroots)) != EOF; (*n_of_tests)++)
+    int nOK = 0;
+    int Suc_Scan = fscanf(Tests,"%lf%lf%lf%lf%lf%d",
+                     &a, &b, &c, &refx1, &refx2, &refnroots);
+
+    while(Suc_Scan != EOF)
     {
-        if(ngood_snann != 6)
+        if(Suc_Scan != 6)
         {
             printf("Test failed: Incorrect input. ");
             exit(1);
         }
+
+        (*n_of_tests)++;
         nOK += test_n(a, b, c, refx1, refx2, refnroots, *n_of_tests+1);
+
+        Suc_Scan = fscanf(Tests,"%lf%lf%lf%lf%lf%d",
+                     &a, &b, &c, &refx1, &refx2, &refnroots);
     }
 
     fclose(Tests);

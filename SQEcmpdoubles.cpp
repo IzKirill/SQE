@@ -9,11 +9,17 @@ cmp_double cmpz_doubles (const double double_number)
     GAssert(isfinite(double_number));
 
     if (fabs(double_number) < EPS)
+    {
         return DOUBLE_EQUALS_ZERO;
+    }
     else if (double_number > EPS)
+    {
         return DOUBLE_MORE_ZERO;
+    }
     else
+    {
         return DOUBLE_LESS_ZERO;
+    }
 }
 
 bool equal_zero(const double coefficient)

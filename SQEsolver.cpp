@@ -40,7 +40,6 @@ Solutions square_solver (const double a,const double b,const double c,
         }
         else if (cmpz_doubles(c) == DOUBLE_MORE_ZERO)
         {
-
                 GAssert(equal_zero(b));
                 GAssert(!(equal_zero(a)));
 

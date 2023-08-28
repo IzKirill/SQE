@@ -43,8 +43,8 @@ int SQEtest(int* n_of_tests, char file[])
             exit(1);
         }
 
-        (*n_of_tests)++;
         nOK += test_n(a, b, c, refx1, refx2, refnroots, *n_of_tests+1);
+        (*n_of_tests)++;
 
         Suc_Scan = fscanf(Tests,"%lf%lf%lf%lf%lf%d",
                      &a, &b, &c, &refx1, &refx2, &refnroots);
@@ -59,6 +59,7 @@ static int test_n(const double a, const double b, const double c,
                   const double refx1, const double refx2, Solutions refnroots,
                   const int IDtest)
 {
+    GAssert(IDtest > 0);
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));

@@ -1,53 +1,48 @@
-#include "SQEsolver.h"
-#include "SQEtest.h"
-#include "MyAssert.h"
-#include "SQEchoice.h"
-#include "SQEstdio.h"
+#include "SQEcommand.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#include <string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    printf("\t\t" "Hello, enter the number:\n"
-           "1: Solve quadratic equation.\t"
-           "2: test code." "\t" "3: quit" "\n");
-
-    int your_choice = 0;
-    User_Choice(&your_choice);
-
-    GAssert(your_choice == 1 || your_choice == 2 ||
-            your_choice == 3);
-
-    if (your_choice == 2)
+    if (argc == 1)
     {
-        int n_of_tests = 0;
-        int nOK = SQEtest(&n_of_tests);
-        printf("%d/%d successfully completed tests.", nOK, n_of_tests);
+        return main_menu();
     }
 
-    else if (your_choice == 1)
+    else if (!strcmp(argv[1], "-test"))
     {
-        printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
-        double a = 0, b = 0, c = 0;
-        input_coef(&a, 1);
-        input_coef(&b, 2);
-        input_coef(&c, 3);
-
-        GAssert(isfinite(a));
-        GAssert(isfinite(b));
-        GAssert(isfinite(c));
-
-        double x1 = 0, x2 = 0;
-        Solutions nSolutions = square_solver(a, b, c, &x1, &x2);
-
-        output_solveQE(nSolutions, x1, x2);
+        test("Tests.csv");
     }
 
-    else if (your_choice == 3)
+    else if (!strcmp(argv[1], "-square"))
     {
-        return 0;
+        square();
     }
 
+    else if (!strcmp(argv[1], "-linear"))
+    {
+        linear();
+    }
+
+    else if (!strcmp(argv[1], "-file"))
+    {
+        if (argc < 3)
+        {
+            printf("Input name of your file after -file.");
+        }
+        else
+        {
+            test(argv[2]);
+        }
+    }
+
+    else if (!strcmp(argv[1], "-help"))
+    {
+        help_menu();
+    }
+    else
+    {
+        printf("Unknown command, write -help.\n");
+    }
     return 0;
 }

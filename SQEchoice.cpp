@@ -10,12 +10,12 @@ void User_Choice (int* your_choice)
     while (scanf("%d", your_choice) != 1 ||
           (*your_choice != 1 && *your_choice != 2 && *your_choice != 3) )
     {
-        clear_buffer();
+        status_buffer();
         printf("Please, write a correct number: 1, 2 or 3! \n");
     }
     if (status_buffer())
     {
-        printf("Input only number(1, 2 or 3) and only one!\n");
+        printf("Input only number and only one!\n");
         goto begin;
     }
 }

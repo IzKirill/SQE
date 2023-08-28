@@ -20,15 +20,15 @@ Solutions square_solver (const double a,const double b,const double c,
     GAssert(root2 != NULL);
 
 
-    if (equal_zero(a))   // a=0
+    if (equal_zero(a))
     {
       return lin_solver (b, c, root1);
     }
-    else    // a!=0
+    else
     {
       if (equal_zero(b))
       {
-        if (equal_zero(c))// a!=0 b=0 c=0
+        if (equal_zero(c))
         {
             GAssert(!(equal_zero(a)));
 
@@ -38,14 +38,14 @@ Solutions square_solver (const double a,const double b,const double c,
 
             return ONE;
         }
-        else if (cmpz_doubles(c) == DOUBLE_MORE_ZERO)  // a!=0 b=0 c>0
+        else if (cmpz_doubles(c) == DOUBLE_MORE_ZERO)
         {
                 GAssert(equal_zero(b));
                 GAssert(!(equal_zero(a)));
 
                 return ZERO;
         }
-        else     // a!=0 b=0 c<0
+        else
         {
                 GAssert(equal_zero(b));
                 GAssert(!(equal_zero(a)));
@@ -62,7 +62,7 @@ Solutions square_solver (const double a,const double b,const double c,
                 return TWO;
         }
        }
-       else if (equal_zero(c))   // a!=0 b!=0 c=0
+       else if (equal_zero(c))
        {
             GAssert(!(equal_zero(a)));
             GAssert(!(equal_zero(b)));
@@ -76,7 +76,7 @@ Solutions square_solver (const double a,const double b,const double c,
 
             return TWO;
        }
-       else   // a!=0 b!=0 c!=0
+       else
        {
             return QE_part_discriminant(a, b, c, root1, root2);
        }
@@ -91,16 +91,16 @@ Solutions lin_solver (const double b, const double c, double* root1)
 
     if (equal_zero(b))
     {
-        if (equal_zero(c))    // b=0 c=0
+        if (equal_zero(c))
         {
             return INFINITELY;
         }
-        else  // b=0 c!=0
+        else
         {
             return ZERO;
         }
     }
-    else  //b!=0 c!=0
+    else
     {
         *root1 = -c/b;
 
@@ -116,8 +116,6 @@ static Solutions QE_part_discriminant (const double a, const double b, const dou
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));
-    GAssert(isfinite(*root1));
-    GAssert(isfinite(*root2));
     GAssert(!(equal_zero(a)));
     GAssert(!(equal_zero(b)));
     GAssert(!(equal_zero(c)));
@@ -128,20 +126,20 @@ static Solutions QE_part_discriminant (const double a, const double b, const dou
 
     GAssert(isfinite(D));
 
-    if (cmpz_doubles(D) == DOUBLE_LESS_ZERO)   // D<0
+    if (cmpz_doubles(D) == DOUBLE_LESS_ZERO)
     {
         GAssert(isfinite(D));
 
         return ZERO;
     }
-    else if (equal_zero(D))   // D=0
+    else if (equal_zero(D))
     {
         GAssert(isfinite(D));
 
         *root1 = - b/(2*a);
         return ONE;
     }
-    else      // D>0
+    else
     {
         GAssert(isfinite(D));
 

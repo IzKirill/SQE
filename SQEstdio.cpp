@@ -14,7 +14,7 @@ void input_coef (double* coefficient, int n_coefficient)
     printf("Coefficient number - %d: ", n_coefficient);
     while (scanf("%lf", coefficient) != 1)
     {
-            clear_buffer();
+            status_buffer();
             printf("Input number. For example, 4 or 5,25. \n");
     }
     if (status_buffer())

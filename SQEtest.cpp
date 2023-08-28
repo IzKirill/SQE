@@ -8,18 +8,25 @@
 #include <float.h>
 #include <stdlib.h>
 
-static const int ntests = 13;
+static int test_n(const double a, const double b, const double c,
+                  const double refx1, const double refx2,
+                  Solutions refnroots, const int IDtest);
+static int failed_test (const double a, const double b, const double c,
+                        const int IDtest,
+                        const double refx1, const double refx2, Solutions refnroots,
+                        const double x1, const double x2, Solutions nroots);
 
-static int test_n(TestData* ref, const int IDtest);
-static void failed_test(const double a, const double b, const double c,
-                        const int number_test);
+/*
+    SQEtest(.., "square_tests.txt");
+*/
 
 int SQEtest(int* n_of_tests)
 {
-    *n_of_tests = ntests;
-    static TestData TInputData[ntests];
+    double a = 0, b = 0, c = 0;
+    double refx1 = 0, refx2 = 0;
+    Solutions refnroots = ZERO;
 
-    FILE *Tests;
+    FILE *Tests = NULL;
 
     if ((Tests = fopen("Tests.csv", "r")) == NULL)
     {
@@ -27,86 +34,69 @@ int SQEtest(int* n_of_tests)
         exit(1);
     }
 
-    for(int i = 0; fscanf(Tests,"%lf%lf%lf%lf%lf%d", &(TInputData[i].a),
-    &(TInputData[i].b), &(TInputData[i].c), &(TInputData[i].x1), &(TInputData[i].x2),
-    &(TInputData[i].nroots)) != EOF; i++)
-        ;
+    int nOK = 0, ngood_snann = 0;
+    for( ; (ngood_snann = fscanf(Tests,"%lf%lf%lf%lf%lf%d",
+        &a, &b, &c, &refx1, &refx2, &refnroots)) != EOF; (*n_of_tests)++)
+    {
+        if(ngood_snann != 6)
+        {
+            printf("Test failed: Incorrect input. ");
+            exit(1);
+        }
+        nOK += test_n(a, b, c, refx1, refx2, refnroots, *n_of_tests+1);
+    }
 
     fclose(Tests);
-
-    int nOK = 0;
-    for (int i = 0; i < ntests; i++)
-        nOK += test_n(&TInputData[i], i+1);
 
     return nOK;
 }
 
-static int test_n(TestData* ref, const int IDtest)
+static int test_n(const double a, const double b, const double c,
+                  const double refx1, const double refx2, Solutions refnroots,
+                  const int IDtest)
 {
-    GAssert(isfinite(ref->a));
-    GAssert(isfinite(ref->b));
-    GAssert(isfinite(ref->c));
+    GAssert(isfinite(a));
+    GAssert(isfinite(b));
+    GAssert(isfinite(c));
 
     double  x1 = 0, x2 = 0;
-    Solutions nSolutions = square_solver(ref->a, ref->b, ref->c, &x1, &x2);
+    Solutions nSolutions = square_solver(a, b, c, &x1, &x2);
 
     GAssert(isfinite(x1));
     GAssert(isfinite(x2));
-    GAssert(ref->nroots == ZERO || ref->nroots == ONE ||
-            ref->nroots == TWO  || ref->nroots == INFINITELY);
+    GAssert(refnroots == ZERO || refnroots == ONE ||
+            refnroots == TWO  || refnroots == INFINITELY);
 
-    switch (ref->nroots)
+    switch (refnroots)
     {
-    case(ZERO):
-        if (nSolutions != ref->nroots)
+    case(ZERO): case(INFINITELY):
+        if (nSolutions != refnroots)
         {
-            failed_test(ref->a, ref->b, ref->c, IDtest);
-            printf("\n" "Correct output:");
-            output_solveQE(ref->nroots, ref->x1, ref->x2);
-            printf("\n" "Your code output:");
-            output_solveQE(nSolutions, x1, x2);
-            return 0;
+            return failed_test(a, b, c, IDtest,
+                        refx1, refx2,refnroots,
+                        x1, x2, nSolutions);
         }
         return 1;
         break;
 
     case(ONE):
-        if(nSolutions != ref->nroots || cmp_doubles(x1, ref->x1))
+        if(nSolutions != refnroots || cmp_doubles(x1, refx1))
         {
-            failed_test(ref->a, ref->b, ref->c, IDtest);
-            printf("\n" "Correct output:");
-            output_solveQE(ref->nroots, ref->x1, ref->x2);
-            printf("\n" "Your code output:");
-            output_solveQE(nSolutions, x1, x2);
-            return 0;
+            return failed_test(a, b, c, IDtest,
+                        refx1, refx2, refnroots,
+                        x1, x2, nSolutions);
         }
         return 1;
         break;
 
     case(TWO):
         sort_roots(&x1, &x2);
-        if (nSolutions != ref->nroots || cmp_doubles(x1, ref->x1) ||
-            cmp_doubles(x2, ref->x2))
+        if (nSolutions != refnroots || cmp_doubles(x1, refx1) ||
+            cmp_doubles(x2, refx2))
         {
-            failed_test(ref->a, ref->b, ref->c, IDtest);
-            printf("\n" "Correct output:");
-            output_solveQE(ref->nroots, ref->x1, ref->x2);
-            printf("\n" "Your code output:");
-            output_solveQE(nSolutions, x1, x2);
-            return 0;
-        }
-        return 1;
-        break;
-
-    case(INFINITELY):
-        if (nSolutions != ref->nroots)
-        {
-            failed_test(ref->a, ref->b, ref->c, IDtest);
-            printf("\n" "Correct output:");
-            output_solveQE(ref->nroots, ref->x1, ref->x2);
-            printf("\n" "Your code output:");
-            output_solveQE(nSolutions, x1, x2);
-            return 0;
+            return failed_test(a, b, c, IDtest,
+                        refx1, refx2,refnroots,
+                        x1, x2, nSolutions);
         }
         return 1;
         break;
@@ -133,13 +123,25 @@ void sort_roots (double* x1, double* x2)
     }
 }
 
-static void failed_test (const double a, const double b, const double c, const int IDtest)
+static int failed_test (const double a, const double b, const double c,
+                         const int IDtest,
+                         const double refx1, const double refx2, Solutions refnroots,
+                         const double x1, const double x2, Solutions nroots)
 {
     GAssert(isfinite(a));
     GAssert(isfinite(b));
     GAssert(isfinite(c));
+    GAssert(isfinite(x1));
+    GAssert(isfinite(x2));
+    GAssert(isfinite(refx1));
+    GAssert(isfinite(refx2));
 
-    printf("Failed test #%d of %d. Wrong answer.\n", IDtest, ntests);
+    printf("Failed test #%d. Wrong answer.\n", IDtest);
     printf("\n" "Test input: a = %lf, b = %lf, c = %lf" "\n", a, b, c);
+    printf("\n" "Correct output:");
+    output_solveQE(refnroots, refx1, refx2);
+    printf("\n" "Your code output:");
+    output_solveQE(nroots, x1, x2);
+    return 0;
 }
 

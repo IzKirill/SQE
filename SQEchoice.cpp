@@ -6,11 +6,16 @@
 void User_Choice (int* your_choice)
 {
     GAssert(your_choice != NULL);
-
-    while (scanf("%d", your_choice) != 1 || status_buffer() ||
+    begin:
+    while (scanf("%d", your_choice) != 1 ||
           (*your_choice != 1 && *your_choice != 2 && *your_choice != 3) )
     {
-        clear_buf();
+        status_buffer();
         printf("Please, write a correct number: 1, 2 or 3! \n");
+    }
+    if (status_buffer())
+    {
+        printf("Input only number and only one!\n");
+        goto begin;
     }
 }

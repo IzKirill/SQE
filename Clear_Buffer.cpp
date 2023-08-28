@@ -1,19 +1,17 @@
 #include "Clear_Buffer.h"
 #include <stdio.h>
 
-void clear_buf()
-{
-    int ch = 0;
-    while((ch = getchar()) != '\n')
-        ;
-}
-
 int status_buffer()
 {
-    int ch = 0;
+    int ch = 0, i = 0;
     while((ch = getchar()) != '\n')
     {
         if (ch != ' ' && ch != '\n')
-            return 1;
+            i = 1;
     }
+    if (i == 1)
+    {
+        return 1;
+    }
+    return 0;
 }

@@ -34,7 +34,8 @@ int main_menu()
 
     if (your_choice == 2)
     {
-        test("Tests.csv");
+        char default_file[] = "Tests.csv";
+        test(default_file);
     }
 
     else if (your_choice == 1)

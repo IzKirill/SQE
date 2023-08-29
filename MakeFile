@@ -23,15 +23,11 @@ SQEcommand.o: SQEcommand.cpp
 	g++ -c SQEcommandr.cpp
 
 
-test: $(SQEFilesAll)
-	g++ $(SQEFilesAll) -o SQE 
+test:  
 	./SQE -test
-square: $(SQEFilesAll)
-	g++ $(SQEFilesAll) -o SQE 
+square:  
 	./SQE -square
-linear: $(SQEFilesAll)
-	g++ $(SQEFilesAll) -o SQE 
+linear:  
 	./SQE -linear
-help: $(SQEFilesAll)
-	g++ $(SQEFilesAll) -o SQE 
+help:  
 	./SQE -help

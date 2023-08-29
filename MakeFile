@@ -21,3 +21,17 @@ Clear_Buffer.o: Clear_Buffer.cpp
 	g++ -c Clear_Buffer.cpp
 SQEcommand.o: SQEcommand.cpp
 	g++ -c SQEcommandr.cpp
+
+
+test: $(SQEFilesAll)
+	g++ $(SQEFilesAll) -o SQE 
+	./SQE -test
+square: $(SQEFilesAll)
+	g++ $(SQEFilesAll) -o SQE 
+	./SQE -square
+linear: $(SQEFilesAll)
+	g++ $(SQEFilesAll) -o SQE 
+	./SQE -linear
+help: $(SQEFilesAll)
+	g++ $(SQEFilesAll) -o SQE 
+	./SQE -help

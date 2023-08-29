@@ -14,11 +14,10 @@ static int test_n(const double a, const double b, const double c,
                   const double refx1, const double refx2,
                   Solutions refnroots, const int IDtest);
 
-static int failed_test (const double a, const double b, const double c,
-                        const int IDtest,
-                        const double refx1, const double refx2, Solutions refnroots,
-                        const double x1, const double x2, Solutions nroots);
-
+static int failed_test(const double a, const double b, const double c,
+                       const int IDtest,
+                       const double refx1, const double refx2, Solutions refnroots,
+                       const double x1, const double x2, Solutions nroots);
 
 int SQEtest(int* n_of_tests, char file[])
 {

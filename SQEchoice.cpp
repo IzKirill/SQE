@@ -4,12 +4,13 @@
 #include "Color.h"
 #include <stdio.h>
 
-void user_choice (int* your_choice)
+int user_choice ()
 {
-    GAssert(your_choice != NULL);
+    int your_choice = 0;
+
     begin:
-    while (scanf("%d", your_choice) != 1 ||
-          (*your_choice != 1 && *your_choice != 2 && *your_choice != 3) )
+    while (scanf("%d", &your_choice) != 1 ||
+          (your_choice != 1 && your_choice != 2 && your_choice != 3) )
     {
         clear_buffer();
         LIGHT_RED;
@@ -25,4 +26,6 @@ void user_choice (int* your_choice)
         WHITE;
         goto begin;
     }
+
+    return your_choice;
 }

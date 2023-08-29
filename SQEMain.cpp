@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 int main(int argc, char *argv[])
 {
     if (argc == 1)
@@ -13,8 +12,7 @@ int main(int argc, char *argv[])
 
     else if (!strcmp(argv[1], "--test"))
     {
-        char default_file[] = "Tests.csv";
-        test(default_file);
+        test("Tests.csv");
     }
 
     else if (!strcmp(argv[1], "--square"))

@@ -78,25 +78,33 @@ int main_menu()              //linear add
 
     WHITE;
 
-    int your_choice = 0;
-    user_choice(&your_choice);           // возвр значение
-
-    GAssert(your_choice == 1 || your_choice == 2 ||
-                your_choice == 3);                      // разделить
-
-    if (your_choice == 2)
+    switch (user_choice())
     {
-        test("Tests.csv");
-    }
+    case(2):
+        {
+            test("Tests.csv");
+        }
+        break;
 
-    else if (your_choice == 1)                // switch
-    {
-        square();
-    }
+    case(1):
+        {
+            square();
+        }
+        break;
 
-    else if (your_choice == 3)
-    {
-        return 0;
+    case(3):
+        {
+            return 0;
+        }
+        break;
+
+    default:
+        {
+            LIGHT_RED;
+            printf("ERROR: Inccorect value.");
+
+            WHITE;
+        }
     }
 }
 
@@ -108,5 +116,6 @@ void help_menu()
     printf("--square \t     Solve square equation.\n");
     printf("--test \t\t     Testing solver square equation.\n");
     printf("--file name_of_file  Testing solver square equation with your tests.\n");
+
     WHITE;
 }

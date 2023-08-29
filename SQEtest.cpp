@@ -13,6 +13,7 @@
 static int test_n(const double a, const double b, const double c,
                   const double refx1, const double refx2,
                   Solutions refnroots, const int IDtest);
+
 static int failed_test (const double a, const double b, const double c,
                         const int IDtest,
                         const double refx1, const double refx2, Solutions refnroots,
@@ -172,7 +173,6 @@ static int failed_test (const double a, const double b, const double c,
 
     GREEN;
     printf("\n" "Correct output: ");
-
     output_solveQE(refnroots, refx1, refx2);
 
     RED;

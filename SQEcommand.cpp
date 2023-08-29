@@ -62,13 +62,13 @@ void linear()
     output_solveQE(nSolutions, x, 0);
 }
 
-int main_menu()              //linear add
+int main_menu()
 {
     YELLOW;
     printf("\t\t" "Hello, enter the number:\n");
 
     LIGHT_BLUE;
-    printf("1: Solve quadratic equation.\t");
+    printf("1: Solve equation.\t");
 
     LIGHT_PURPLE;
     printf("2: test code.\t");
@@ -82,7 +82,44 @@ int main_menu()              //linear add
     {
     case(1):
         {
-            square();
+            YELLOW;
+            printf("\t" " What type of equation do you want to solve?\n");
+
+            LIGHT_GOLYBOI;
+            printf("1: Linear.\t");
+
+            LIGHT_GREY;
+            printf("2: Square.\t");
+
+            RED;
+            printf("3: Back to menu.\t\n");
+
+            WHITE;
+            switch(user_choice())
+            {
+            case(1):
+                {
+                    linear();
+                }
+                break;
+            case(2):
+                {
+                    square();
+                }
+                break;
+            case(3):
+                {
+                    main_menu();
+                }
+                break;
+            default:
+                {
+                    LIGHT_RED;
+                    printf("ERROR: Inccorect value.");
+
+                    WHITE;
+                }
+            }
         }
         break;
 

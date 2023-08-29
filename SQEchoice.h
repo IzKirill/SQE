@@ -1,6 +1,6 @@
 #pragma once
 
-void User_Choice (int* your_choice);
+void user_choice (int* your_choice);
 
 
 

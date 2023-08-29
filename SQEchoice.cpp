@@ -6,7 +6,7 @@
 
 HANDLE console_choice = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void User_Choice (int* your_choice)
+void user_choice (int* your_choice)
 {
     GAssert(your_choice != NULL);
     begin:

@@ -21,7 +21,7 @@ void input_coef (double* coefficient, int n_coefficient)
     {
         while (scanf("%lf", coefficient) != 1)
         {
-            clear_buffer();
+            ClearStatusBuffer();
             LIGHT_RED;
             printf("Input number. For example, 4 or 5,25. \n");
 
@@ -31,7 +31,7 @@ void input_coef (double* coefficient, int n_coefficient)
             WHITE;
         }
 
-        if (status_buffer())
+        if (ClearStatusBuffer())
         {
             LIGHT_RED;
             printf("Input only number and only one!\n");

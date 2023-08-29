@@ -1,7 +1,7 @@
 #include "Clear_Buffer.h"
 #include <stdio.h>
 
-int status_buffer()
+int ClearStatusBuffer()
 {
     int ch = 0, i = 0;
 

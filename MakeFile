@@ -1,4 +1,4 @@
-SQEFilesAll = SQEMain.o SQEsolver.o SQEtest.o SQEstdio.o SQEcmpdoubles.o SQEchoice.o MyAssert.o Clear_Buffer.o SQEcommand.cpp
+SQEFilesAll = SQEMain.o SQEsolver.o SQEtest.o SQEstdio.o SQEcmpdoubles.o SQEchoice.o MyAssert.o Clear_Buffer.o SQEcommand.o Color.o
 
 all: $(SQEFilesAll)
 	g++ $(SQEFilesAll) -o SQE
@@ -21,13 +21,15 @@ Clear_Buffer.o: Clear_Buffer.cpp
 	g++ -c Clear_Buffer.cpp
 SQEcommand.o: SQEcommand.cpp
 	g++ -c SQEcommand.cpp
+Color.o: Color.cpp
+	g++ -c Color.cpp
 
 
 test:  
-	./SQE -test
+	./SQE --test
 square:  
-	./SQE -square
+	./SQE --square
 linear:  
-	./SQE -linear
+	./SQE --linear
 help:  
-	./SQE -help
+	./SQE --help

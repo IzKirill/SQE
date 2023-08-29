@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 
             WHITE;
         }
+
         else
         {
             test(argv[2]);
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
     {
         help_menu();
     }
+
     else
     {
         LIGHT_RED;

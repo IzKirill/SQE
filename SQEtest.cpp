@@ -50,7 +50,7 @@ int SQEtest(int* n_of_tests, char file[])
 
             WHITE;
 
-            exit(1);
+            exit(2);
         }
 
         nOK += test_n(a, b, c, refx1, refx2, refnroots, *n_of_tests+1);

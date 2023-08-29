@@ -27,7 +27,6 @@ int user_choice ()
 
             WHITE;
         }
-
         else
         {
             flag_exit = 0;

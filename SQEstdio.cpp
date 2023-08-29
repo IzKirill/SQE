@@ -41,7 +41,6 @@ void input_coef (double* coefficient, int n_coefficient)
 
             WHITE;
         }
-
         else
         {
             flag_exit = 0;

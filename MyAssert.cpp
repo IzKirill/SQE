@@ -12,6 +12,6 @@ void MyAssert(int expression, const int nline, const char file[], const char fun
 
         WHITE;
 
-        exit(5);
+        exit(3);
     }
 }

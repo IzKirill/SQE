@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SQECMPDOUBLES_H__
+#define __SQECMPDOUBLES_H__
 
 const double EPS = 1e-9;
 
@@ -10,5 +11,6 @@ cmp_double cmpz_doubles (const double double_number);
 int cmp_doubles (const double double_number1, const double double_numbr2);
 bool equal_zero(const double coefficient);
 
+#endif
 
 

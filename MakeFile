@@ -20,7 +20,7 @@ MyAssert.o: MyAssert.cpp
 Clear_Buffer.o: Clear_Buffer.cpp
 	g++ -c Clear_Buffer.cpp
 SQEcommand.o: SQEcommand.cpp
-	g++ -c SQEcommandr.cpp
+	g++ -c SQEcommand.cpp
 
 
 test:  

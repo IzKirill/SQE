@@ -25,6 +25,9 @@ void input_coef (double* coefficient, int n_coefficient)
         SetConsoleTextAttribute(console_stdio, (0 << 4) | 12);
         printf("Input number. For example, 4 or 5,25. \n");
 
+        SetConsoleTextAttribute(console_stdio, (0 << 4) | 13);
+        printf("Coefficient number - %d: ", n_coefficient);
+
         SetConsoleTextAttribute(console_stdio, (0 << 4) | 15);
     }
     if (status_buffer())

@@ -31,7 +31,7 @@ void input_coef (double* coefficient, int n_coefficient)
         SetConsoleTextAttribute(console_stdio, (0 << 4) | 15);
     }
     if (status_buffer())
-    {
+    {                                                                  // פכאד
         SetConsoleTextAttribute(console_stdio, (0 << 4) | 12);
         printf("Input only number and only one!\n");
 

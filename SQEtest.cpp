@@ -85,45 +85,54 @@ static int test_n(const double a, const double b, const double c,
 
     switch (refnroots)
     {
-    case(ZERO): case(INFINITELY):
-        if (nSolutions != refnroots)
+    case(ZERO):
+    case(INFINITELY)
         {
-            return failed_test(a, b, c, IDtest,
+            if (nSolutions != refnroots)
+            {
+                return failed_test(a, b, c, IDtest,
                         refx1, refx2,refnroots,
                         x1, x2, nSolutions);
+            }
+            return 1;
         }
-        return 1;
         break;
 
     case(ONE):
-        if(nSolutions != refnroots || cmp_doubles(x1, refx1))
         {
-            return failed_test(a, b, c, IDtest,
-                        refx1, refx2, refnroots,
-                        x1, x2, nSolutions);
+            if(nSolutions != refnroots || cmp_doubles(x1, refx1))
+            {
+                return failed_test(a, b, c, IDtest,
+                            refx1, refx2, refnroots,
+                            x1, x2, nSolutions);
+            }
+            return 1;
         }
-        return 1;
         break;
 
     case(TWO):
-        sort_roots(&x1, &x2);
-        if (nSolutions != refnroots || cmp_doubles(x1, refx1) ||
-            cmp_doubles(x2, refx2))
         {
-            return failed_test(a, b, c, IDtest,
-                        refx1, refx2,refnroots,
-                        x1, x2, nSolutions);
+            sort_roots(&x1, &x2);
+            if (nSolutions != refnroots || cmp_doubles(x1, refx1) ||
+                cmp_doubles(x2, refx2))
+            {
+                return failed_test(a, b, c, IDtest,
+                            refx1, refx2,refnroots,
+                            x1, x2, nSolutions);
+            }
+            return 1;
         }
-        return 1;
         break;
 
     default:
+        {
         SetConsoleTextAttribute(console_test, (0 << 4) | 12);
         printf("ERROR: nSolutions = %d \n", nSolutions);
 
         SetConsoleTextAttribute(console_test, (0 << 4) | 15);
 
         return 0;
+        }
     }
 }
 

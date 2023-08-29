@@ -11,31 +11,41 @@ void input_coef (double* coefficient, int n_coefficient)
 {
     GAssert(coefficient != NULL);
 
-    begin:
     LIGHT_PURPLE;
     printf("Coefficient number - %d: ", n_coefficient);
 
     WHITE;
 
-    while (scanf("%lf", coefficient) != 1)
+    int flag_exit = 1;
+    while(flag_exit)
     {
-        clear_buffer();
-        LIGHT_RED;
-        printf("Input number. For example, 4 or 5,25. \n");
+        while (scanf("%lf", coefficient) != 1)
+        {
+            clear_buffer();
+            LIGHT_RED;
+            printf("Input number. For example, 4 or 5,25. \n");
 
-        LIGHT_PURPLE;
-        printf("Coefficient number - %d: ", n_coefficient);
+            LIGHT_PURPLE;
+            printf("Coefficient number - %d: ", n_coefficient);
 
-        WHITE;
-    }
-    if (status_buffer())
-    {                                                                  // פכאד
-        LIGHT_RED;
-        printf("Input only number and only one!\n");
+            WHITE;
+        }
 
-        WHITE;
+        if (status_buffer())
+        {
+            LIGHT_RED;
+            printf("Input only number and only one!\n");
 
-        goto begin;
+            LIGHT_PURPLE;
+            printf("Coefficient number - %d: ", n_coefficient);
+
+            WHITE;
+        }
+
+        else
+        {
+            flag_exit = 0;
+        }
     }
 }
 

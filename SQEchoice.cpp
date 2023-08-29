@@ -6,25 +6,32 @@
 
 int user_choice ()
 {
-    int your_choice = 0;
+    int your_choice = 0, flag_exit = 1;
 
-    begin:
-    while (scanf("%d", &your_choice) != 1 ||
-          (your_choice != 1 && your_choice != 2 && your_choice != 3) )
+    while(flag_exit)
     {
-        clear_buffer();
-        LIGHT_RED;
-        printf("Please, write a correct number: 1, 2 or 3! \n");
+        while (scanf("%d", &your_choice) != 1 ||
+            (your_choice != 1 && your_choice != 2 && your_choice != 3))
+        {
+            clear_buffer();
+            LIGHT_RED;
+            printf("Please, write a correct number: 1, 2 or 3! \n");
 
-        WHITE;
-    }
-    if (status_buffer())
-    {
-        LIGHT_RED;
-        printf("Input only number(1, 2 or 3) and only one!\n");
+            WHITE;
+        }
 
-        WHITE;
-        goto begin;
+        if (status_buffer())
+        {
+            LIGHT_RED;
+            printf("Input only number(1, 2 or 3) and only one!\n");
+
+            WHITE;
+        }
+
+        else
+        {
+            flag_exit = 0;
+        }
     }
 
     return your_choice;

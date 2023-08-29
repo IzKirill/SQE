@@ -125,12 +125,12 @@ static int test_n(const double a, const double b, const double c,
 
     default:
         {
-        LIGHT_RED;
-        printf("ERROR: nSolutions = %d \n", nSolutions);
+            LIGHT_RED;
+            printf("ERROR: nSolutions = %d \n", nSolutions);
 
-        WHITE;
+            WHITE;
 
-        return 0;
+            return 0;
         }
     }
 }
@@ -169,7 +169,6 @@ static int failed_test (const double a, const double b, const double c,
 
     BROWN;
     printf("\n" "Test input: a = %lf, b = %lf, c = %lf" "\n", a, b, c);
-
 
     GREEN;
     printf("\n" "Correct output: ");

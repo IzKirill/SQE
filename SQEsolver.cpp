@@ -28,7 +28,7 @@ Solutions square_solver (const double a,const double b,const double c,
     {
       if (equal_zero(b))
       {
-        if (equal_zero(c))// a!=0 b=0 c=0
+        if (equal_zero(c))    // a!=0 b=0 c=0
         {
             GAssert(!(equal_zero(a)));
 

@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     else
     {
         LIGHT_RED;
-        printf("Unknown command, write -help.\n");
+        printf("Unknown command, write --help.\n");
 
         WHITE;
     }

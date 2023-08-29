@@ -19,7 +19,6 @@ Solutions square_solver (const double a,const double b,const double c,
     GAssert(root1 != NULL);
     GAssert(root2 != NULL);
 
-
     if (equal_zero(a))   // a=0
     {
       return lin_solver (b, c, root1);

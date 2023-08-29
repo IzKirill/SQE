@@ -8,60 +8,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
-void test(char file[])
-{
-    int n_of_tests = 0;
-    int nOK = SQEtest(&n_of_tests, file);
-
-    LIGHT_GREEN;
-    printf("[%d/%d] successfully completed tests.", nOK, n_of_tests);
-
-    WHITE;
-}
-
-void square()
-{
-    BROWN;
-    printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
-
-    WHITE;
-
-    double a = 0, b = 0, c = 0;
-    input_coef(&a, 1);
-    input_coef(&b, 2);
-    input_coef(&c, 3);
-
-    GAssert(isfinite(a));
-    GAssert(isfinite(b));
-    GAssert(isfinite(c));
-
-    double x1 = 0, x2 = 0;
-    Solutions nSolutions = square_solver(a, b, c, &x1, &x2);
-
-    output_solveQE(nSolutions, x1, x2);
-}
-
-void linear()
-{
-    BROWN;
-    printf("\n" "Enter the coefficients of the quadratic equation(a, b):\n");
-
-    WHITE;
-
-    double a = 0, b = 0;
-    input_coef(&a, 1);
-    input_coef(&b, 2);
-
-    GAssert(isfinite(a));
-    GAssert(isfinite(b));
-
-    double x = 0;
-    Solutions nSolutions = lin_solver(a, b, &x);
-
-    output_solveQE(nSolutions, x, 0);
-}
-
 int main_menu()
 {
     YELLOW;
@@ -125,7 +71,7 @@ int main_menu()
 
     case(2):
         {
-            test("Tests.csv");
+            test(default_file);
         }
         break;
 
@@ -143,6 +89,62 @@ int main_menu()
             WHITE;
         }
     }
+    return 0;
+}
+
+void test(const char file[])
+{
+    GAssert(file != NULL);
+
+    int n_of_tests = 0;
+    int nOK = SQEtest(&n_of_tests, file);
+
+    LIGHT_GREEN;
+    printf("[%d/%d] successfully completed tests.", nOK, n_of_tests);
+
+    WHITE;
+}
+
+void square()
+{
+    BROWN;
+    printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
+
+    WHITE;
+
+    double a = 0, b = 0, c = 0;
+    input_coef(&a, 1);
+    input_coef(&b, 2);
+    input_coef(&c, 3);
+
+    GAssert(isfinite(a));
+    GAssert(isfinite(b));
+    GAssert(isfinite(c));
+
+    double x1 = 0, x2 = 0;
+    Solutions nSolutions = square_solver(a, b, c, &x1, &x2);
+
+    output_solveQE(nSolutions, x1, x2);
+}
+
+void linear()
+{
+    BROWN;
+    printf("\n" "Enter the coefficients of the quadratic equation(a, b):\n");
+
+    WHITE;
+
+    double a = 0, b = 0;
+    input_coef(&a, 1);
+    input_coef(&b, 2);
+
+    GAssert(isfinite(a));
+    GAssert(isfinite(b));
+
+    double x = 0;
+    Solutions nSolutions = lin_solver(a, b, &x);
+
+    output_solveQE(nSolutions, x, 0);
 }
 
 void help_menu()

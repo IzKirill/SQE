@@ -1,28 +1,30 @@
 SQEFilesAll = SQEMain.o SQEsolver.o SQEtest.o SQEstdio.o SQEcmpdoubles.o SQEchoice.o MyAssert.o Clear_Buffer.o SQEcommand.o Color.o
 
+flags = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wno-missing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
+
 all: $(SQEFilesAll)
-	g++ $(SQEFilesAll) -o SQE
+	g++ $(SQEFilesAll) -o SQE $(flags)
 	./SQE
 SQEMain.o: SQEMain.cpp
-	g++ -c SQEMain.cpp
+	g++ -c SQEMain.cpp $(flags)
 SQEsolver.o: SQEsolver.cpp
-	g++ -c SQEsolver.cpp
+	g++ -c SQEsolver.cpp $(flags)
 SQEtest.o: SQEtest.cpp
-	g++ -c SQEtest.cpp
+	g++ -c SQEtest.cpp $(flags)
 SQEstdio.o: SQEstdio.cpp
-	g++ -c SQEstdio.cpp
+	g++ -c SQEstdio.cpp $(flags)
 SQEcmpdoubles.o.o: SQEcmpdoubles.o.cpp
-	g++ -c SQEcmpdoubles.o.cpp
+	g++ -c SQEcmpdoubles.o.cpp $(flags)
 SQEchoice.o: SQEchoice.cpp
-	g++ -c SQEchoice.cpp
+	g++ -c SQEchoice.cpp $(flags)
 MyAssert.o: MyAssert.cpp
-	g++ -c MyAssert.cpp
+	g++ -c MyAssert.cpp $(flags)
 Clear_Buffer.o: Clear_Buffer.cpp
-	g++ -c Clear_Buffer.cpp
+	g++ -c Clear_Buffer.cpp $(flags)
 SQEcommand.o: SQEcommand.cpp
-	g++ -c SQEcommand.cpp
+	g++ -c SQEcommand.cpp $(flags)
 Color.o: Color.cpp
-	g++ -c Color.cpp
+	g++ -c Color.cpp $(flags)
 
 
 test:  

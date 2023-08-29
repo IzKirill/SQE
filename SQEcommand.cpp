@@ -4,29 +4,28 @@
 #include "MyAssert.h"
 #include "SQEchoice.h"
 #include "SQEstdio.h"
+#include "Color.h"
 #include <stdio.h>
 #include <math.h>
-#include <windows.h>
 
-HANDLE console_command = GetStdHandle(STD_OUTPUT_HANDLE);
 
 void test(char file[])
 {
     int n_of_tests = 0;
     int nOK = SQEtest(&n_of_tests, file);
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 2);
-    printf("[%d/%d] successfully completed tests.", nOK, n_of_tests); // [10/5]
+    LIGHT_GREEN;
+    printf("[%d/%d] successfully completed tests.", nOK, n_of_tests);
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
+    WHITE;
 }
 
 void square()
 {
-    SetConsoleTextAttribute(console_command, (0 << 4) | 6);
+    BROWN;
     printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
+    WHITE;
 
     double a = 0, b = 0, c = 0;
     input_coef(&a, 1);
@@ -45,7 +44,11 @@ void square()
 
 void linear()
 {
+    BROWN;
     printf("\n" "Enter the coefficients of the quadratic equation(a, b):\n");
+
+    WHITE;
+
     double a = 0, b = 0;
     input_coef(&a, 1);
     input_coef(&b, 2);
@@ -59,21 +62,21 @@ void linear()
     output_solveQE(nSolutions, x, 0);
 }
 
-int main_menu()                 // linear добавить
+int main_menu()              //linear add
 {
-    SetConsoleTextAttribute(console_command, (0 << 4) | 14);
+    YELLOW;
     printf("\t\t" "Hello, enter the number:\n");
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 1);
+    LIGHT_BLUE;
     printf("1: Solve quadratic equation.\t");
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 5);
+    LIGHT_PURPLE;
     printf("2: test code.\t");
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 4);
+    RED;
     printf("3: quit" "\n");
 
-    SetConsoleTextAttribute(console_command, (0 << 4) | 15);
+    WHITE;
 
     int your_choice = 0;
     user_choice(&your_choice);           // возвр значение
@@ -99,9 +102,11 @@ int main_menu()                 // linear добавить
 
 void help_menu()
 {
+    YELLOW;
     printf("--help \t\t     Gives the necessary information.\n");
     printf("--linear \t     Solve linear equation.\n");
     printf("--square \t     Solve square equation.\n");
     printf("--test \t\t     Testing solver square equation.\n");
-    printf("--file name_of_file   Testing solver square equation with your tests.\n");
+    printf("--file name_of_file  Testing solver square equation with your tests.\n");
+    WHITE;
 }

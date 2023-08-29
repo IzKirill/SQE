@@ -1,9 +1,8 @@
 #include "SQEcommand.h"
+#include "Color.h"
 #include <stdio.h>
 #include <string.h>
-#include <windows.h>
 
-HANDLE console_main = GetStdHandle(STD_OUTPUT_HANDLE);
 
 int main(int argc, char *argv[])
 {
@@ -12,29 +11,30 @@ int main(int argc, char *argv[])
         return main_menu();
     }
 
-    else if (!strcmp(argv[1], "-test"))
+    else if (!strcmp(argv[1], "--test"))
     {
-        test("Tests.csv");
+        char default_file[] = "Tests.csv";
+        test(default_file);
     }
 
-    else if (!strcmp(argv[1], "-square"))
+    else if (!strcmp(argv[1], "--square"))
     {
         square();
     }
 
-    else if (!strcmp(argv[1], "-linear"))
+    else if (!strcmp(argv[1], "--linear"))
     {
         linear();
     }
 
-    else if (!strcmp(argv[1], "-file"))
+    else if (!strcmp(argv[1], "--file"))
     {
         if (argc < 3)
         {
-            SetConsoleTextAttribute(console_main, (0 << 4) | 12);
+            LIGHT_RED;
             printf("Input name of your file after -file.");
 
-            SetConsoleTextAttribute(console_main, (0 << 4) | 15);
+            WHITE;
         }
         else
         {
@@ -42,16 +42,16 @@ int main(int argc, char *argv[])
         }
     }
 
-    else if (!strcmp(argv[1], "-help"))
+    else if (!strcmp(argv[1], "--help"))
     {
         help_menu();
     }
     else
     {
-        SetConsoleTextAttribute(console_main, (0 << 4) | 12);
+        LIGHT_RED;
         printf("Unknown command, write -help.\n");
 
-        SetConsoleTextAttribute(console_main, (0 << 4) | 15);
+        WHITE;
     }
     return 0;
 }

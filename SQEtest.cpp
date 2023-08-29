@@ -3,13 +3,12 @@
 #include "MyAssert.h"
 #include "SQEcmpdoubles.h"
 #include "SQEstdio.h"
+#include "Color.h"
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
 #include <stdlib.h>
-#include <windows.h>
 
-HANDLE console_test = GetStdHandle(STD_OUTPUT_HANDLE);
 
 static int test_n(const double a, const double b, const double c,
                   const double refx1, const double refx2,
@@ -30,10 +29,10 @@ int SQEtest(int* n_of_tests, char file[])
 
     if ((Tests = fopen(file, "r")) == NULL)
     {
-        SetConsoleTextAttribute(console_test, (0 << 4) | 12);
+        LIGHT_RED;
         printf("Cannot open file.\n");
 
-        SetConsoleTextAttribute(console_test, (0 << 4) | 15);
+        WHITE;
 
         exit(1);
     }
@@ -46,10 +45,10 @@ int SQEtest(int* n_of_tests, char file[])
     {
         if(Suc_Scan != 6)
         {
-            SetConsoleTextAttribute(console_test, (0 << 4) | 12);
+            LIGHT_RED;
             printf("Test failed: Incorrect input. ");
 
-            SetConsoleTextAttribute(console_test, (0 << 4) | 15);
+            WHITE;
 
             exit(1);
         }
@@ -86,7 +85,7 @@ static int test_n(const double a, const double b, const double c,
     switch (refnroots)
     {
     case(ZERO):
-    case(INFINITELY)
+    case(INFINITELY):
         {
             if (nSolutions != refnroots)
             {
@@ -126,10 +125,10 @@ static int test_n(const double a, const double b, const double c,
 
     default:
         {
-        SetConsoleTextAttribute(console_test, (0 << 4) | 12);
+        LIGHT_RED;
         printf("ERROR: nSolutions = %d \n", nSolutions);
 
-        SetConsoleTextAttribute(console_test, (0 << 4) | 15);
+        WHITE;
 
         return 0;
         }
@@ -165,23 +164,23 @@ static int failed_test (const double a, const double b, const double c,
     GAssert(isfinite(refx1));
     GAssert(isfinite(refx2));
 
-    SetConsoleTextAttribute(console_test, (0 << 4) | 12);
+    LIGHT_RED;
     printf("Failed test #%d. Wrong answer.\n", IDtest);
 
-    SetConsoleTextAttribute(console_test, (0 << 4) | 6);
+    BROWN;
     printf("\n" "Test input: a = %lf, b = %lf, c = %lf" "\n", a, b, c);
 
 
-    SetConsoleTextAttribute(console_test, (0 << 4) | 10);
-    printf("\n" "Correct output:");
+    GREEN;
+    printf("\n" "Correct output: ");
 
     output_solveQE(refnroots, refx1, refx2);
 
-    SetConsoleTextAttribute(console_test, (0 << 4) | 13);
-    printf("\n" "Your code output:");
+    RED;
+    printf("\n" "Your code output: ");
     output_solveQE(nroots, x1, x2);
 
-    SetConsoleTextAttribute(console_test, (0 << 4) | 15);
+    WHITE;
 
     return 0;
 }

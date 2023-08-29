@@ -80,15 +80,15 @@ int main_menu()              //linear add
 
     switch (user_choice())
     {
-    case(2):
-        {
-            test("Tests.csv");
-        }
-        break;
-
     case(1):
         {
             square();
+        }
+        break;
+
+    case(2):
+        {
+            test("Tests.csv");
         }
         break;
 

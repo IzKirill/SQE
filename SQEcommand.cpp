@@ -10,83 +10,107 @@
 
 int main_menu()
 {
-    YELLOW;
-    printf("\t\t" "Hello, enter the number:\n");
-
-    LIGHT_BLUE;
-    printf("1: Solve equation.\t");
-
-    LIGHT_PURPLE;
-    printf("2: test code.\t");
-
-    RED;
-    printf("3: quit" "\n");
-
-    WHITE;
-
-    switch (user_choice())
+    int n_menu = 1;
+    while (1)
     {
-    case(1):
+        switch(n_menu)
         {
-            YELLOW;
-            printf("\t" " What type of equation do you want to solve?\n");
-
-            LIGHT_GOLYBOI;
-            printf("1: Linear.\t");
-
-            LIGHT_GREY;
-            printf("2: Square.\t");
-
-            RED;
-            printf("3: Back to menu.\t\n");
-
-            WHITE;
-            switch(user_choice())
+        case(1):
             {
-            case(1):
-                {
-                    linear();
-                }
-                break;
-            case(2):
-                {
-                    square();
-                }
-                break;
-            case(3):
-                {
-                    main_menu();
-                }
-                break;
-            default:
-                {
-                    LIGHT_RED;
-                    printf("ERROR: Inccorect value.");
+                BROWN;
+                printf("\n*-----------------------------------------------*\n");
 
-                    WHITE;
-                }
+                YELLOW;
+                printf("\t\t" "Enter the number:\n");
+
+                LIGHT_BLUE;
+                printf("1: Solve equation.\t");
+
+                LIGHT_PURPLE;
+                printf("2: test code.\t");
+
+                RED;
+                printf("3: quit" "\n");
+            }
+            break;
+
+        case(2):
+            {
+                YELLOW;
+                printf("\t" " What type of equation do you want to solve?\n");
+
+                LIGHT_GOLYBOI;
+                printf("1: Linear.\t");
+
+                LIGHT_GREY;
+                printf("2: Square.\t");
+
+                RED;
+                printf("3: Back to menu.\t\n");
+            }
+            break;
+
+        default:
+            {
+                LIGHT_RED;
+                printf("ERROR: Inccorect value.");
+
+                return 0;
             }
         }
-        break;
 
-    case(2):
+        switch (user_choice())
         {
-            test(default_file);
-        }
-        break;
+        case(1):
+            {
+                if(n_menu == 1)
+                {
+                    n_menu = 2;
+                }
+                else
+                {
+                    solve_linear();
 
-    case(3):
-        {
-            return 0;
-        }
-        break;
+                    n_menu = 1;
+                }
+            }
+            break;
 
-    default:
-        {
-            LIGHT_RED;
-            printf("ERROR: Inccorect value.");
+        case(2):
+            {
+                if(n_menu == 1)
+                {
+                    test(default_file);
+                }
+                else
+                {
+                    solve_square();
 
-            WHITE;
+                    n_menu = 1;
+                }
+            }
+            break;
+
+        case(3):
+            {
+                if(n_menu == 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    n_menu = 1;
+                }
+            }
+            break;
+
+        default:
+            {
+                LIGHT_RED;
+                printf("ERROR: Inccorect value.");
+
+                return 0;
+            }
         }
     }
     return 0;
@@ -100,17 +124,13 @@ void test(const char file[])
     int nOK = SQEtest(&n_of_tests, file);
 
     LIGHT_GREEN;
-    printf("[%d/%d] successfully completed tests.", nOK, n_of_tests);
-
-    WHITE;
+    printf("[%d/%d] successfully completed tests.\n", nOK, n_of_tests);
 }
 
-void square()
+void solve_square()
 {
     BROWN;
     printf("\n" "Enter the coefficients of the quadratic equation(a, b, c):\n");
-
-    WHITE;
 
     double a = 0, b = 0, c = 0;
     input_coef(&a, 1);
@@ -127,12 +147,10 @@ void square()
     output_solveQE(nSolutions, x1, x2);
 }
 
-void linear()
+void solve_linear()
 {
     BROWN;
     printf("\n" "Enter the coefficients of the quadratic equation(a, b):\n");
-
-    WHITE;
 
     double a = 0, b = 0;
     input_coef(&a, 1);
@@ -150,11 +168,9 @@ void linear()
 void help_menu()
 {
     YELLOW;
-    printf("--help \t\t     Gives the necessary information.\n");
-    printf("--linear \t     Solve linear equation.\n");
-    printf("--square \t     Solve square equation.\n");
-    printf("--test \t\t     Testing solver square equation.\n");
-    printf("--file name_of_file  Testing solver square equation with your tests.\n");
-
-    WHITE;
+    printf("--help \t\t     Gives the necessary information.\n"
+           "--linear \t     Solve linear equation.\n"
+           "--square \t     Solve square equation.\n"
+           "--test \t\t     Testing solver square equation.\n"
+           "--file name_of_file  Testing solver square equation with your tests.\n");
 }

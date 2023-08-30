@@ -16,16 +16,12 @@ int user_choice ()
             ClearStatusBuffer();
             LIGHT_RED;
             printf("Please, write a correct number: 1, 2 or 3! \n");
-
-            WHITE;
         }
 
         if (ClearStatusBuffer())
         {
             LIGHT_RED;
             printf("Input only number(1, 2 or 3) and only one!\n");
-
-            WHITE;
         }
         else
         {

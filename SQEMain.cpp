@@ -17,12 +17,12 @@ int main(int argc, const char *argv[])
 
     else if (!strcmp(argv[1], "--square"))
     {
-        square();
+        solve_square();
     }
 
     else if (!strcmp(argv[1], "--linear"))
     {
-        linear();
+        solve_linear();
     }
 
     else if (!strcmp(argv[1], "--file"))
@@ -31,8 +31,6 @@ int main(int argc, const char *argv[])
         {
             LIGHT_RED;
             printf("Input name of your file after -file.");
-
-            WHITE;
         }
         else
         {
@@ -49,8 +47,6 @@ int main(int argc, const char *argv[])
     {
         LIGHT_RED;
         printf("Unknown command, write --help.\n");
-
-        WHITE;
     }
     return 0;
 }

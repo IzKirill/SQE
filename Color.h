@@ -2,6 +2,7 @@
 #define __COLOR_H__
 
 #include <windows.h>
+#include <stdio.h>
 
 extern HANDLE console;
 
@@ -20,5 +21,9 @@ extern HANDLE console;
 #define LIGHT_PURPLE SetConsoleTextAttribute  (console, (0 << 4) | 13)
 #define YELLOW SetConsoleTextAttribute        (console, (0 << 4) | 14)
 #define WHITE SetConsoleTextAttribute         (console, (0 << 4) | 15)
+
+#define printf(args...) do {    printf(args);       \
+                                WHITE;     }        \
+                                while(0)            \
 
 #endif

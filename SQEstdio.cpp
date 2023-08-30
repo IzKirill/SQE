@@ -14,8 +14,6 @@ void input_coef (double* coefficient, int n_coefficient)
     LIGHT_PURPLE;
     printf("Coefficient number - %d: ", n_coefficient);
 
-    WHITE;
-
     int flag_exit = 1;
     while(flag_exit)
     {
@@ -27,8 +25,6 @@ void input_coef (double* coefficient, int n_coefficient)
 
             LIGHT_PURPLE;
             printf("Coefficient number - %d: ", n_coefficient);
-
-            WHITE;
         }
 
         if (ClearStatusBuffer())
@@ -38,8 +34,6 @@ void input_coef (double* coefficient, int n_coefficient)
 
             LIGHT_PURPLE;
             printf("Coefficient number - %d: ", n_coefficient);
-
-            WHITE;
         }
         else
         {
@@ -61,8 +55,6 @@ void output_solveQE (Solutions nSolutions, const double x1, const double x2)
         {
             LIGHT_GOLYBOI;
             printf("Zero roots.\n");
-
-            WHITE;
         }
         break;
 
@@ -70,8 +62,6 @@ void output_solveQE (Solutions nSolutions, const double x1, const double x2)
         {
             LIGHT_GOLYBOI;
             printf("One root %.5lf.\n", x1);
-
-            WHITE;
         }
         break;
 
@@ -79,8 +69,6 @@ void output_solveQE (Solutions nSolutions, const double x1, const double x2)
         {
             LIGHT_GOLYBOI;
             printf("Two roots %.5lf and %.5lf.\n", x1, x2);
-
-            WHITE;
         }
         break;
 
@@ -88,8 +76,6 @@ void output_solveQE (Solutions nSolutions, const double x1, const double x2)
         {
             LIGHT_GOLYBOI;
             printf("Infinite roots.\n");
-
-            WHITE;
         }
         break;
 
@@ -97,8 +83,6 @@ void output_solveQE (Solutions nSolutions, const double x1, const double x2)
         {
             LIGHT_RED;
             printf("ERROR: nSolutions = %d", nSolutions);
-
-            WHITE;
         }
     }
 }

@@ -10,8 +10,6 @@ void MyAssert(int expression, const int nline, const char file[], const char fun
         LIGHT_RED;
         printf("%s:%d: error in function %s.", file, nline, func);
 
-        WHITE;
-
         exit(3);
     }
 }
